@@ -1,11 +1,21 @@
 <!DOCTYPE>
 <html>
     <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script src="app.js"></script>  
         <title>Package Tracker</title>
     </head>
-    <body>
+    <body ng-app="flapperNews" ng-controller="MainCtrl">
         <p align="center">
             <h1>Package Tracker</h1>
         </p>
+        <p>Let's see if I can create a Package Tracker for <i>shipping</i> services like UPS, USPS, China Post etc..</p>
+        <div>
+            {{test}}
+        </div>
+        <div ng-repeat="post in posts | orderBy: '-upvotes'">
+            {{post.title}} - upvotes: {{post.upvotes}}
+        </div>
+
     </body>
-<html
+<html>
