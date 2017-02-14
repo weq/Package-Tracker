@@ -1,21 +1,46 @@
 <!DOCTYPE>
 <html>
     <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-        <script src="app.js"></script>  
         <title>Package Tracker</title>
+
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+        <style> .glyphicon-thumbs-up {cursor: pointer} </style>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script src="app.js"></script>      
     </head>
     <body ng-app="flapperNews" ng-controller="MainCtrl">
-        <p align="center">
-            <h1>Package Tracker</h1>
-        </p>
-        <p>Let's see if I can create a Package Tracker for <i>shipping</i> services like UPS, USPS, China Post etc..</p>
-        <div>
-            {{test}}
-        </div>
-        <div ng-repeat="post in posts | orderBy: '-upvotes'">
-            {{post.title}} - upvotes: {{post.upvotes}}
-        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+                <div class="page-header">
+                    <h1>Package Tracker</h1>
+                </div>
+                
+                <p>Let's see if I can create a Package Tracker for <i>shipping</i> services like UPS, USPS, China Post etc..</p>
+
+                <div>
+                    {{test}}
+                </div>
+
+                <div ng-repeat="post in posts | orderBy: '-upvotes'">
+                    <span class="glyphicon glyphicon-thumbs-up"
+                        ng-click="incrementUpvotes(post)"></span>
+                    {{post.upvotes}}
+                    
+                    <a ng-show="post.link" href="{{post.link}}">
+                        {{post.title}}
+                    </a>
+                    <span ng-hide="post.link">
+                        {{post.title}}
+                    </span>
+                </div>
+                <div>
+                    <form ng-submit="addPost()">
+                        <input type="text" ng-model="title"></input>
+                        <button type="submit">Post</button> 
+                    </form>
+                </div>
 
     </body>
 <html>
